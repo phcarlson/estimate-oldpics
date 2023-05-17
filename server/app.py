@@ -9,7 +9,8 @@ import os
 from PIL import Image
 import torch.nn as nn
 import math
-
+from werkzeug.utils import secure_filename
+import base64
 app = Flask(__name__)
 
 class MyCNN(nn.Module):
@@ -83,14 +84,29 @@ def get_prediction(image_bytes):
 
 @app.route('/', methods=['POST', 'GET'])
 def predict():
+    # upload_folder = os.path.join('static', 'uploads')
+    # app.config['UPLOAD'] = upload_folder
+
     if request.method == 'POST':
         file = request.files['file']
         img_bytes = file.read()
+        
         estimated_year = get_prediction(image_bytes=img_bytes)
-        print(jsonify({'estimated_year': estimated_year}))
-        return jsonify({'estimated_year': estimated_year})
+        # print(jsonify({'estimated_year': estimated_year}))
+        # filename = secure_filename(file.filename)
+        # print('upload_image filename: ' + filename)
+
+        # file.save(os.path.join(app.config['UPLOAD'], filename))
+        # img = os.path.join(app.config['UPLOAD'], filename)
+        # im = Image.open("test.jpg")
+        # data = io.BytesIO(img_bytes)
+        # im.save(data, "JPEG")
+        # encoded_img_data = base64.b64encode(data.getvalue())
+# IMAGE=encoded_img_data.decode('utf-8')
+        # image = io.BytesIO(img_bytes).save()
+        return render_template('index.html', EST_YEAR = estimated_year, MODEL_SPEAK="'Ah, thank you. What do you think?'")
     else:
-        return render_template('index.html')
+        return render_template('index.html', EST_YEAR = '? Year', MODEL_SPEAK = "'Please, I yearn to estimate the dates that photos were taken. Feed my desire!'")
 
 if __name__ == '__main__':
     app.run()
