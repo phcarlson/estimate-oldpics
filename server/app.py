@@ -74,6 +74,20 @@ def transform_image(image_bytes):
     image = to_tensor_transform(image)
     return image
 
+def transform_image_path(imagepath):
+    # my_transforms = transforms.Compose([transforms.Resize(255),
+    #                                     transforms.CenterCrop(224),
+    #                                     transforms.ToTensor(),
+    #                                     transforms.Normalize(
+    #                                         [0.485, 0.456, 0.406],
+    #                                         [0.229, 0.224, 0.225])])
+    to_tensor_transform = transforms.ToTensor()
+    image = Image.open(imagepath).convert('RGB')
+    newsize = (224, 224)
+    image = image.resize(newsize)
+    image = to_tensor_transform(image)
+    return image
+
 
 def get_prediction(image_bytes):
     tensor = transform_image(image_bytes=image_bytes)
@@ -81,6 +95,11 @@ def get_prediction(image_bytes):
     # predicted_idx = str(y_hat.item())
     return str(y_hat.item())
 
+def get_prediction_path(imagepath):
+    tensor = transform_image_path(imagepath)
+    y_hat = model(tensor)
+    # predicted_idx = str(y_hat.item())
+    return str(y_hat.item())
 
 @app.route('/', methods=['POST', 'GET'])
 def predict():
@@ -107,6 +126,21 @@ def predict():
         return render_template('index.html', EST_YEAR = estimated_year, MODEL_SPEAK="'Ah, thank you. What do you think?'")
     else:
         return render_template('index.html', EST_YEAR = '? Year', MODEL_SPEAK = "'Please, I yearn to estimate the dates that photos were taken. Feed my desire!'")
+
+@app.route('/gamePage', methods=['GET'])
+def game():
+    
+
+    estimated_year_1 = get_prediction_path('static/gamepics/1973.jpg')
+    estimated_year_2 = get_prediction_path('static/gamepics/1943.jpg')
+    estimated_year_3 = get_prediction_path('static/gamepics/1968.jpg')
+    estimated_year_4 = get_prediction_path('static/gamepics/1963Part2.jpg')
+    estimated_year_5 = get_prediction_path('static/gamepics/1957.jpg')
+    estimated_year_6 = get_prediction_path('static/gamepics/1986.png')
+    estimated_year_7 = get_prediction_path('static/gamepics/1974Part2.jpg')
+    estimated_year_8 = get_prediction_path('static/gamepics/1983.jpg')
+
+    return render_template('game.html', MODEL_GUESS1=estimated_year_1, MODEL_GUESS2=estimated_year_2, MODEL_GUESS3=estimated_year_3, MODEL_GUESS4=estimated_year_4, MODEL_GUESS5 = estimated_year_5, MODEL_GUESS6= estimated_year_6, MODEL_GUESS7= estimated_year_7, MODEL_GUESS8 = estimated_year_8)
 
 if __name__ == '__main__':
     app.run()

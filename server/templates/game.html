@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Image Date Estimation GAME For 1930-1999</title>
+
+</head>
+
+<body>
+  <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+  <script src="{{url_for('static', filename='js/game.js')}}" defer></script>
+
+  <div class="container">
+    <div class="row d-flex">
+      <div class="col d-flex flex-column">
+        <div class="row d-flex align-items-center justify-items-center">
+          <h1 class="display-2"><span class="badge shadow" style="background-color: gray;">Game Time</span>
+          </h1>
+        </div>
+
+
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1973.jpg')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess1" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess1">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess1Model" hidden value="{{MODEL_GUESS1}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess1Model">
+            </div>         
+            <button id="guessButton1" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result1" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1943.jpg')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess2" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess2">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess2Model" hidden value="{{MODEL_GUESS2}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess2Model">
+            </div>         
+            <button id="guessButton2" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result2" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1968.jpg')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess3" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess3">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess3Model" hidden value="{{MODEL_GUESS3}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess3Model">
+            </div>         
+            <button id="guessButton3" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result3" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1963Part2.jpg')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess4" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess4">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess4Model" hidden value="{{MODEL_GUESS4}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess4Model">
+            </div>         
+            <button id="guessButton4" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result4" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1957.jpg')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess5" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess5">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess5Model" hidden value="{{MODEL_GUESS5}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess5Model">
+            </div>         
+            <button id="guessButton5" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result5" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1986.png')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess6" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess6">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess6Model" hidden value="{{MODEL_GUESS6}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess5Model">
+            </div>         
+            <button id="guessButton6" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result6" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1974Part2.jpg')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess7" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess7">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess7Model" hidden value="{{MODEL_GUESS7}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess7Model">
+            </div>         
+            <button id="guessButton7" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result7" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='gamepics/1983.jpg')}}" style="width: 50vw; height: 50vw; object-fit: cover;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >You say?</span>
+              </div>
+              <input id="guess8" type="text" value="" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess8">
+            </div>     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Model says?</span>
+              </div>
+              <input id="guess8Model" hidden value="{{MODEL_GUESS8}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess8Model">
+            </div>         
+            <button id="guessButton8" class=" btn btn-primary">Guess</button>
+            <p></p>
+            <p id="result8" hidden> __ WINS! Next round.</p>
+          </div>
+        </div>
+        <!-- <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='4036626958.jpg')}}">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess1">
+            </div>     
+            <div class="input-group mb-3" hidden>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input value="{{MODEL_GUESS1}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess1Model">
+            </div>         
+            <button id="guessButton1" class=" btn btn-primary">Guess</button>
+
+            <p> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='4036626958.jpg')}}">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess1">
+            </div>     
+            <div class="input-group mb-3" hidden>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input value="{{MODEL_GUESS1}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess1Model">
+            </div>         
+            <button id="guessButton1" class=" btn btn-primary">Guess</button>
+
+            <p> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='4036626958.jpg')}}">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess1">
+            </div>     
+            <div class="input-group mb-3" hidden>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input value="{{MODEL_GUESS1}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess1Model">
+            </div>         
+            <button id="guessButton1" class=" btn btn-primary">Guess</button>
+
+            <p> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='4036626958.jpg')}}">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess1">
+            </div>     
+            <div class="input-group mb-3" hidden>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input value="{{MODEL_GUESS1}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess1Model">
+            </div>         
+            <button id="guessButton1" class=" btn btn-primary">Guess</button>
+
+            <p> __ WINS! Next round.</p>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center justify-items-center">
+          <div class="col d-flex flex-column align-items-center justify-items-center">
+            <img id="imageToEst" src="{{url_for('static', filename='4036626958.jpg')}}">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Your guess" aria-label="Your Guess" aria-describedby="guess1">
+            </div>     
+            <div class="input-group mb-3" hidden>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="guess1">1930-1999?</span>
+              </div>
+              <input value="{{MODEL_GUESS1}}" type="text" class="form-control" placeholder="Model's guess" aria-label="Model's Guess" aria-describedby="guess1Model">
+            </div>         
+            <button id="guessButton1" class=" btn btn-primary">Guess</button>
+
+            <p> __ WINS! Next round.</p>
+          </div>
+        </div> -->
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+
+
+    $('#inputfile').bind('change', function () {
+      let fileSize = this.files[0].size / 1024 / 1024; // this gives in MB
+      if (fileSize > 1) {
+        $("#inputfile").val(null);
+        alert('file is too big. images more than 1MB are not allowed')
+        return
+      }
+
+      let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+      if ($.inArray(ext, ['jpg', 'jpeg']) == -1) {
+        $("#inputfile").val(null);
+        alert('only jpeg/jpg files are allowed!');
+      }
+    });
+
+    jQuery(document).ready(function ($) {
+      $(document).on('frmFormComplete', function (event, form, response) {
+        // var formID = $(form).find('input[name="form_id"]').val();
+        console.log(response);
+      })
+    });
+
+  </script>
+</body>
+
+</html>

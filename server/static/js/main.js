@@ -28,34 +28,6 @@ form.addEventListener("submit", async (event)=>{
     imageElem.src = imageFile.files[0];
 });
 
-// uploadButton.addEventListener("click", async (event)=>{
-//     // let imageString = await toBase64(imageFile.files[0]);
-//     imageElem.src = imageString;
-//     let estimate = await getEstimate(imageString);
-//     modelEstResult.innerHTML = estimate;
-// });
-
-
-// async function getEstimate(imageString){
-//     try {
-//         const response = await fetch(`/`, {
-//             method: 'POST',
-//             headers: {
-//                 "Content-Type": "application/json",
-//               },
-//             body: JSON.stringify({imageString: imageString})
-//         });
-    
-//         // await handleResponseStatus(response);
-    
-//         const data = await response.json();
-//         console.log(data);
-//         return data.estimated_year;
-//     }
-//     catch (err) {
-//         throw Error(`Unexpected error: ${err}`);
-//     }
-// }
 
 if(localStorage.getItem("imgData")!== null){
     imageElem.src = localStorage.getItem("imgData");
@@ -64,3 +36,19 @@ if(localStorage.getItem("imgData")!== null){
 else{
     imageElem.src = "static/4036626958.jpg";
 }
+
+
+let playGameButton = document.getElementById("playGameButton");
+
+playGameButton.addEventListener("click", async (event)=>{
+    console.log("YO")
+    try {
+
+        window.location.href = '/gamePage';
+            }
+    catch (err) {
+        console.log("error")
+
+        throw Error(`Unexpected error: ${err}`);
+    }
+});
